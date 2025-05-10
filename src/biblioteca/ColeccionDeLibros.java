@@ -14,6 +14,7 @@ public class ColeccionDeLibros {
         libros.add(libro);
     }
 
+    // Composite: colección actúa como contenedor de objetos Libro
     public List<Libro> obtenerTodosLosLibros() {
         return libros;
     }

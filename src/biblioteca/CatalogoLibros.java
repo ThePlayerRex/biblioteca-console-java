@@ -3,11 +3,15 @@ package biblioteca;
 import java.util.*;
 
 public class CatalogoLibros {
+    // Aplicación del patrón Singleton: instancia única del catálogo
     private static CatalogoLibros instancia;
+
     private List<Libro> libros = new ArrayList<>();
 
+    // Constructor privado evita instanciación directa
     private CatalogoLibros() {}
 
+    // Método para obtener la única instancia (Singleton)
     public static CatalogoLibros getInstancia() {
         if (instancia == null) {
             instancia = new CatalogoLibros();
@@ -16,7 +20,12 @@ public class CatalogoLibros {
     }
 
     public void agregarLibro(ColeccionDeLibros coleccion) {
+        // Composite: se agregan varios libros de una colección
         libros.addAll(coleccion.obtenerTodosLosLibros());
+    }
+
+    public void agregarLibro(Libro libro) {
+        libros.add(libro);
     }
 
     public void eliminarLibro(Libro libro) {
@@ -32,19 +41,14 @@ public class CatalogoLibros {
         }
         return disponibles;
     }
-    
-    public void mostrarCatalogo() {
-        for (Libro l : libros) {
-            System.out.println("- " + l.getTitulo() + (l.estaDisponible() ? "" : " (prestado)"));
-        }
-    }    
 
     public List<Libro> obtenerTodosLosLibros() {
         return libros;
     }
 
-    public void agregarLibro(Libro libro) {
-        libros.add(libro);
+    public void mostrarCatalogo() {
+        for (Libro l : libros) {
+            System.out.println("- " + l.getTitulo() + (l.estaDisponible() ? "" : " (prestado)"));
+        }
     }
-    
 }

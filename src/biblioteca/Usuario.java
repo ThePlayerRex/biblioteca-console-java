@@ -11,6 +11,7 @@ public class Usuario implements Observador {
         return nombre;
     }
 
+    // Implementación del método Observer
     @Override
     public void notificar(String mensaje) {
         System.out.println("Notificación para " + nombre + ": " + mensaje);

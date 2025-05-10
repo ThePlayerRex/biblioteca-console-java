@@ -6,16 +6,18 @@ import java.util.*;
 public class BibliotecaApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        // Uso del patrón Singleton para obtener el catálogo único
         CatalogoLibros catalogo = CatalogoLibros.getInstancia();
 
-        // Crear libros y colección
+        // Crear libros y colección (Composite)
         Libro l1 = new Libro("El Principito");
         Libro l2 = new Libro("1984");
 
         ColeccionDeLibros coleccion = new ColeccionDeLibros("Colección Ciencia Ficción");
         coleccion.agregar(l1);
         coleccion.agregar(l2);
-        catalogo.agregarLibro(coleccion);
+        catalogo.agregarLibro(coleccion); // Composite: agregando colección
 
         Map<Libro, Usuario> prestamosActivos = new HashMap<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -38,7 +40,6 @@ public class BibliotecaApp {
                     break;
 
                 case "2":
-                    System.out.println("\n--- Libros disponibles ---");
                     List<Libro> disponibles = catalogo.obtenerLibrosDisponibles();
                     for (int i = 0; i < disponibles.size(); i++) {
                         System.out.println((i + 1) + ". " + disponibles.get(i).getTitulo());
@@ -62,10 +63,12 @@ public class BibliotecaApp {
                         Usuario nuevoUsuario = new Usuario(nombreUsuario);
 
                         Libro libroSeleccionado = disponibles.get(seleccion);
+                        libroSeleccionado.suscribir(nuevoUsuario); // Observer
+
                         Date fechaPrestamo = new Date();
                         Calendar calendario = Calendar.getInstance();
                         calendario.setTime(fechaPrestamo);
-                        calendario.add(Calendar.DAY_OF_YEAR, 3); // 3 días de préstamo
+                        calendario.add(Calendar.DAY_OF_YEAR, 3);
                         Date fechaDevolucion = calendario.getTime();
 
                         System.out.println("\nLibro prestado a " + nuevoUsuario.getNombre());
@@ -88,11 +91,10 @@ public class BibliotecaApp {
                         break;
                     }
 
-                    System.out.println("\n--- Libros prestados ---");
                     List<Libro> librosPrestados = new ArrayList<>(prestamosActivos.keySet());
                     for (int i = 0; i < librosPrestados.size(); i++) {
                         System.out.println((i + 1) + ". " + librosPrestados.get(i).getTitulo() +
-                            " (prestado a " + prestamosActivos.get(librosPrestados.get(i)).getNombre() + ")");
+                                " (prestado a " + prestamosActivos.get(librosPrestados.get(i)).getNombre() + ")");
                     }
 
                     System.out.print("Seleccione el libro a recibir: ");
@@ -119,8 +121,8 @@ public class BibliotecaApp {
                             System.out.println("✅ El libro fue entregado a tiempo.");
                         }
 
-                        // Registrar como disponible nuevamente
                         libroDevuelto.setFechaDevolucion(null);
+                        libroDevuelto.devolver(); // Observer
                         catalogo.agregarLibro(libroDevuelto);
                         prestamosActivos.remove(libroDevuelto);
 
