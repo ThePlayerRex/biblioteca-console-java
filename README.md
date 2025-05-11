@@ -30,21 +30,21 @@ Aplicación de consola en Java para la gestión de una biblioteca. Permite reali
 
 Asegúrate de tener Java instalado.
 
-javac -d bin src/BibliotecaApp.java
-java -cp bin BibliotecaApp
+- javac -d bin src/BibliotecaApp.java
+- java -cp bin BibliotecaApp
 
 ## Patrones de diseño usados
-Singleton: En CatalogoLibros, para asegurar una única instancia del catálogo.
+ 
+- Singleton: En CatalogoLibros, para asegurar una única instancia del catálogo.
 
-Composite: En ColeccionDeLibros y CatalogoLibros, para manejar jerarquías de libros.
+- Composite: En ColeccionDeLibros y CatalogoLibros, para manejar jerarquías de libros.
 
-Observer: Entre Libro y Usuario, para notificar cambios en el estado de los libros.
+- Observer: Entre Libro y Usuario, para notificar cambios en el estado de los libros.
 
 ##  Autor
 
 - [ThePlayerRex](https://github.com/ThePlayerRex)
 
 ##  Estado del proyecto
-
-✅ Finalizado — versión estable para consola.
+- Finalizado — versión estable para consola.
 
