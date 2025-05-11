@@ -1,37 +1,54 @@
-# biblioteca-console-java
-Sistema de préstamo de libros en Java por consola, con catálogo, préstamo, devolución y notificaciones a usuarios.
+# Biblioteca Console Java 📚
 
+Aplicación de consola en Java para la gestión de una biblioteca. Permite realizar préstamos, devoluciones y recibir notificaciones cuando cambia el estado de los libros.
 
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+---
 
+## 🚀 Funcionalidades
 
+- 📖 Visualización del catálogo de libros
+- 📥 Préstamo de libros a usuarios
+- 📤 Devolución de libros
+- 🔔 Notificaciones automáticas para usuarios observadores
 
+---
 
-# Biblioteca Console Java
+## 🛠️ Tecnologías utilizadas
 
-Este proyecto es una aplicación de consola en Java que simula un sistema de gestión de biblioteca. Permite a los usuarios:
+- Java 21 (OpenJDK 21.0.7 LTS)
+- Patrones de diseño: Singleton, Composite y Observer
 
-- Ver el catálogo de libros disponibles.
-- Prestar libros a usuarios.
-- Devolver libros prestados.
-- Recibir notificaciones sobre el estado de los libros.
+---
 
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
+## 📂 src/ → Código fuente en Java
+## 📂 bin/ → Archivos compilados (.class)
 
-- `src/`: Contiene el código fuente en Java.
-- `bin/`: Contiene los archivos compilados (.class).
+---
 
-## Cómo ejecutar
+## ▶️ Cómo ejecutar
 
-1. Asegúrate de tener Java instalado en tu sistema.
-2. Compila el proyecto:
-    javac -d bin src/BibliotecaApp.java
-3. Ejecuta la aplicación:
-    java -cp bin BibliotecaApp
+Asegúrate de tener Java instalado.
 
+javac -d bin src/BibliotecaApp.java
+java -cp bin BibliotecaApp
 
+## Patrones de diseño usados
+Singleton: En CatalogoLibros, para asegurar una única instancia del catálogo.
 
+Composite: En ColeccionDeLibros y CatalogoLibros, para manejar jerarquías de libros.
 
-## Autor
+Observer: Entre Libro y Usuario, para notificar cambios en el estado de los libros.
+
+##  Autor
 
 - [ThePlayerRex](https://github.com/ThePlayerRex)
+
+##  Estado del proyecto
+
+✅ Finalizado — versión estable para consola.
+
+
+---
+
+¿Te gustaría que te lo deje ya formateado para que lo copies directo a tu `README.md`?
