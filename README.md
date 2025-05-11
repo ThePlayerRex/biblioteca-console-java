@@ -48,7 +48,3 @@ Observer: Entre Libro y Usuario, para notificar cambios en el estado de los libr
 
 ✅ Finalizado — versión estable para consola.
 
-
----
-
-¿Te gustaría que te lo deje ya formateado para que lo copies directo a tu `README.md`?
